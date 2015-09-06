@@ -88,21 +88,21 @@ function linkedListGenerator() {
     var prev = get(x - 1);
     var node = newNode(value);
 
-    console.log('test123', node);
     node.next = get(x);
+    console.log(length);
 
-    if (prev === false) { // if previous doesnt exist
-      prev = node;
-    } else if (get(x) == tail) {
+    if (x < 0 || x >= length) { //if the number is bigger/smaller, node doesnt exist
+      console.log('hi');
       return false;
+    } else if (x === 0) { // if previous doesnt exist
+      node.next = head;
+      head = node;
+    } else {
+      prev.next = node;
     }
     length++;
     return node;
   }
-
-
-
-
 
   return { //calling stuff out of function
     getHead : getHead,
@@ -114,7 +114,14 @@ function linkedListGenerator() {
   };
 }
 
-// var testList = linkedListGenerator();
+var urlList = linkedListGenerator();
+console.log(urlList.add('news.ycombinator.com', 0));
+console.log(urlList.add('icann.org', 1));
+console.log(urlList.get(0));
+console.log(urlList.get(1));
+console.log(urlList.insert('mozilla.org', 0));
+
+
 // console.log(testList.add('BANANANAANANANNANANANA'));
 // console.log(testList.add('BANANANAANANANNANANA'));
 // console.log(testList.add('BANAANANANNANANANA'));
